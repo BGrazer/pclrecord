@@ -7,6 +7,14 @@ if (!isset($_SESSION['ad_id'])) {
     exit();
 }
 
+if (!isset($_SESSION['role'])) {
+    $stmt = $conn->prepare("SELECT role FROM admin WHERE ad_id = ?");
+    $stmt->execute([$_SESSION['ad_id']]);
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    $_SESSION['role'] = $user['role'] ?? '';
+}
+
+
 $fname = $_SESSION['fname'];
 $lname = $_SESSION['lname'];
 $email_user = $_SESSION['email'];
@@ -89,14 +97,13 @@ $email = $stmt->fetchAll(PDO::FETCH_ASSOC);
   </style>
 </head>
 <body>
-
   <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
       <a href="index.php" class="logo d-flex align-items-center">
         <img src="assets/img/pcl_logo.png" alt="">
-        <span class="d-none d-lg-block">Pick Count Log.</span>
+        <span class="d-none d-lg-block">PCL Inc. Oil & Odo Tracking</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
@@ -184,7 +191,7 @@ $email = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="change-oil-record1.php">
-          <i class="ri-oil-line"></i><span>Changed Oil (FUSO)</span>
+          <i class="ri-oil-line"></i><span>Changed Oil (10W FUSO)</span>
         </a>
       </li>
 
@@ -203,12 +210,14 @@ $email = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </a>
       </li>
 
+     <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?> 
       <li class="nav-item">
         <a class="nav-link collapsed" href="accounts.php">
           <i class="bi bi-people"></i>
           <span>Accounts</span>
         </a>
       </li>
+      <?php endif; ?>
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="logout.php">
@@ -285,11 +294,12 @@ $email = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 </div>
               </div>
             </div>
+            <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
             <div class="col-12">
               <div class="card top-selling overflow-auto">
                 <div class="card-body pb-0">
                   <h5 class="card-title">Accounts</h5>
-                  
+
                   <table class="table table-borderless datatable">
                     <thead>
                       <tr>
@@ -317,6 +327,7 @@ $email = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 </div>
               </div>
             </div>
+            <?php endif; ?>
           </div>
         </div>
 

@@ -60,7 +60,7 @@ if (isset($_GET['error'])) {
 
                   <div class="pt-4 pb-2">
                     <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
-                    <p class="text-center small">Procuders Connections Logistics Inc.</p>
+                    <p class="text-center small">Producers Connections Logistics Inc.</p>
                   </div>
 
                   <form method="POST" action="login.php"class="row g-3 needs-validation">

@@ -98,7 +98,7 @@ $email = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="d-flex align-items-center justify-content-between">
       <a href="index.php" class="logo d-flex align-items-center">
         <img src="assets/img/pcl_logo.png" alt="">
-        <span class="d-none d-lg-block">Pick Count Log.</span>
+        <span class="d-none d-lg-block">PCL Inc. Oil & Odo Tracking</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div>
@@ -153,20 +153,6 @@ $email = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </a>
       </li>
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-          <i class="ri ri-truck-line"></i><span>Trucks</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="components-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
-          <?php foreach ($types as $type): ?>
-            <li>
-              <a href="truck-details.php?wheel_type=<?= $type['wheel_type'] ?>&w_id=<?= $type['w_id'] ?>">
-                <i class="bi bi-circle"></i><span><?= $type['wheel_type'] ?> (<?= $counts[$type['w_id']] ?> trucks)</span>
-              </a>
-            </li>
-          <?php endforeach; ?>
-        </ul>
-      </li>
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
@@ -185,7 +171,7 @@ $email = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="change-oil-record1.php">
-          <i class="ri-oil-line"></i><span>Changed Oil (FUSO)</span>
+          <i class="ri-oil-line"></i><span>Changed Oil (10W FUSO)</span>
         </a>
       </li>
 

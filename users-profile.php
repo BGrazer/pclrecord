@@ -103,7 +103,7 @@ $email = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="d-flex align-items-center justify-content-between">
       <a href="index.php" class="logo d-flex align-items-center">
         <img src="assets/img/pcl_logo.png" alt="">
-        <span class="d-none d-lg-block">Pick Count Log.</span>
+        <span class="d-none d-lg-block">PCL Inc. Oil & Odo Tracking</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
@@ -197,7 +197,7 @@ $email = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="change-oil-record1.php">
-          <i class="ri-oil-line"></i><span>Changed Oil (FUSO)</span></a></li>
+          <i class="ri-oil-line"></i><span>Changed Oil (10W FUSO)</span></a></li>
 
         <li class="nav-item">
         <a class="nav-link collapsed" href="change-oil-record2.php">
@@ -212,12 +212,14 @@ $email = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </a>
       </li>
 
+      <?php if (isset($_SESSION['role']) && strtolower($_SESSION['role']) === 'admin'): ?>
       <li class="nav-item">
         <a class="nav-link collapsed" href="accounts.php">
           <i class="bi bi-people"></i>
           <span>Accounts</span>
         </a>
       </li>
+      <?php endif; ?>
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="logout.php">
